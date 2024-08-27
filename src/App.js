@@ -18,6 +18,7 @@ function App() {
              <h2 className='welcome__h2'>ochroń swoje oszczędności przed szalejącą inflacją i<br />zacznij zarabiać na inwestycjach!</h2>
           </div>
         </section>
+        hejka naklejka
     </div>
   );
 }
