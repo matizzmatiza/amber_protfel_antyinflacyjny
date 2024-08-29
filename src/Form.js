@@ -11,7 +11,7 @@ function Form() {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', name);
+    formData.append('subject', name);
     formData.append('email', email);
     formData.append('message', message);
 
