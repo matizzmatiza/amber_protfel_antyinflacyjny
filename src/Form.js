@@ -16,7 +16,7 @@ function Form() {
     formData.append('message', message);
 
     try {
-      const response = await axios.post('https://truckcodes.pl/send-meil', formData);
+      const response = await axios.post('https://truckcodes.pl/api/send-meil', formData);
       console.log(response.data);
       setResponseMessage('Wiadomość została wysłana pomyślnie.'); // Ustawienie komunikatu sukcesu
     } catch (error) {
