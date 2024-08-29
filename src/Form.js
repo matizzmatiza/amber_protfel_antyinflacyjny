@@ -23,7 +23,7 @@ function Form() {
       const result = await response.json();
       setResponseMessage(result.message);
     } catch (error) {
-      setResponseMessage('Wystąpił błąd podczas wysyłania wiadomości.');
+      setResponseMessage(`Wystąpił błąd podczas wysyłania wiadomości. ${error}`);
     }
   };
 
