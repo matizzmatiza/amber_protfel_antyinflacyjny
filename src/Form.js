@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Pamiętaj, aby zaimportować axios
 
 function Form() {
   const [name, setName] = useState('');
@@ -15,17 +16,16 @@ function Form() {
     formData.append('message', message);
 
     try {
-      const response = await fetch('send_email.php', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-      setResponseMessage(result.message);
+      const response = await axios.post('https://truckcodes.pl/send-meil', formData);
+      console.log(response.data);
+      setResponseMessage('Wiadomość została wysłana pomyślnie.'); // Ustawienie komunikatu sukcesu
     } catch (error) {
-      setResponseMessage(`Wystąpił błąd podczas wysyłania wiadomości. ${error}`);
+      console.error('Error:', error);
+      setResponseMessage('Wystąpił błąd podczas wysyłania wiadomości.'); // Ustawienie komunikatu o błędzie
+    } finally {
+      console.log('ok');
     }
-  };
+  }    
 
   return (
     <form className='form-1' onSubmit={handleSubmit}>
