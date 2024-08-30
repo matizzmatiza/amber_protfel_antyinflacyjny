@@ -3,10 +3,10 @@
 if (count($_POST))
 {
     ////////// USTAWIENIA //////////
-    $email = 'mateusztuczynski@icloud.com'; // Adres e-mail adresata
+    $email = 'kontakt@amerbroker.pl'; // Adres e-mail adresata
     $subject = 'Kontakt z formularza amerbroker.pl - Portfel Antyinflacyjny'; // Temat emaila
-    $message = 'Dziękujemy. Wysłano wiadomość. Skontaktujemy się wkrótce.'; // Komunikat
-    $error = 'Wystąpił błąd podczas wysyłania wiadomosci'; // Komunikat błędu
+    $success_message = 'Dziękujemy. Wysłano wiadomość. Skontaktujemy się wkrótce.'; // Komunikat po sukcesie
+    $error_message = 'Wystąpił błąd podczas wysyłania wiadomości'; // Komunikat błędu
     $charset = 'UTF-8'; // Strona kodowa
     //////////////////////////////
     
@@ -26,17 +26,18 @@ if (count($_POST))
         }
         else $body .= "$name=" . (get_magic_quotes_gpc() ? stripslashes($value) : $value) . "\r\n";
     }
-        echo mail($email, "=?$charset?B?" . base64_encode($subject) . "?=", $body, $head) ? $message : $error;
+    
+    if (mail($email, "=?$charset?B?" . base64_encode($subject) . "?=", $body, $head)) {
+        echo json_encode(['message' => $success_message]);
+    } else {
+        echo json_encode(['message' => $error_message]);
+    }
 }
 else
 {
 ?>
 <form action="?" method="post">
-
 </form>
 <?php
 }
-
-
-
 ?>

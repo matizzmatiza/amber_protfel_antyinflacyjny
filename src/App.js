@@ -12,6 +12,8 @@ import Form from './Form';
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const year = new Date().getFullYear();
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -80,13 +82,13 @@ function App() {
             <img className='header__logo' src={Logo} alt="Logo" />
             <p className='header__title'>Portfel Antyinflacyjny</p>
           </a>
-          <a onClick={scrollToForm} className='header__button' href='#id'>Otrzymaj dostęp do PORTFELA ANTYINFLACYJNEGO</a>
         </div>
       </header>
       <section className="welcome">
         <div className='welcome__inner'>
           <h1 className='welcome__h1'>Portfel Antyinflacyjny</h1>
           <h2 className='welcome__h2'>ochroń swoje oszczędności przed szalejącą inflacją i<br />zacznij zarabiać na inwestycjach!</h2>
+          <a onClick={scrollToForm} className='header__button' href='#id'>Otrzymaj dostęp do PORTFELA ANTYINFLACYJNEGO</a>
         </div>
       </section>
       <section className="what_section">
@@ -125,6 +127,7 @@ function App() {
         <div className="greenBlock">
           <p>Główny analityk serwisu, <strong>Grzegorz Nowak</strong> , to inwestor i analityk z 25 letnim doświadczeniem w branży inwestycji giełdowych – pracował w największych domach maklerskich w kraju. Był kierownikiem Działu Strategii i Rozwoju SDM S.A. i p.o. dyrektora departamentu w CDM S.A. Grupy PeKaO S.A., a także dyrektorem zarządzającym BP, odpowiadał m.in. za new business. Największe pasje to giełda i geopolityka.</p>
         </div>
+        <a onClick={scrollToForm} className='header__button' href='#id'>Otrzymaj dostęp do PORTFELA ANTYINFLACYJNEGO</a>
       </section>
       <section className="info_section">
         <div className="info_sectionWrapper">
@@ -174,6 +177,7 @@ function App() {
               </a>
             </div>
           </div>
+          <a onClick={scrollToForm} className='header__button' href='#id'>Otrzymaj dostęp do PORTFELA ANTYINFLACYJNEGO</a>
         </div>
       </section>
       <section className="payFor_section">
@@ -287,7 +291,41 @@ function App() {
         </div>
       </section>
       <section className='form-section' id='form'>
+        <div className='form-section__inner paypadding'>
+          <div className='form-section__wrapper'>
+            <p>Dokonaj płatności tutaj</p>
+            <div className='form-line'></div>
+            <div className='payment-box'>
+                <div className='payment-1'>
+                  <p class="payment-title">Specjalna oferta</p>
+                  <p class="payment-title">3 miesiące</p>
+                  <stripe-buy-button
+                    buy-button-id="buy_btn_1PtG3c00m0uIFl30mymlSvit"
+                    publishable-key="pk_live_51Pt8yW00m0uIFl30MIrPjCNIffZ7UdUZAflE96B9tJYzC5Op1BcR9ppwzRO62JL5IMjZzxeQUKEqCvApaVzwzG8400xgLMwuYC"
+                  >
+                  </stripe-buy-button>
+                </div>
+                <div className='payment-2'>
+                  <p class="payment-title2">Oferta</p>
+                  <p class="payment-title2">6 miesięcy</p>
+                  <stripe-buy-button
+                    buy-button-id="buy_btn_1PtG5M00m0uIFl30xq5cwvJZ"
+                    publishable-key="pk_live_51Pt8yW00m0uIFl30MIrPjCNIffZ7UdUZAflE96B9tJYzC5Op1BcR9ppwzRO62JL5IMjZzxeQUKEqCvApaVzwzG8400xgLMwuYC"
+                  >
+                  </stripe-buy-button>
+                </div>
+                
+            </div>
+            <p className='security-text'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#1F2E2B" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 0c-3.371 2.866-5.484 3-9 3v11.535c0 4.603 3.203 5.804 9 9.465 5.797-3.661 9-4.862 9-9.465v-11.535c-3.516 0-5.629-.134-9-3zm0 1.292c2.942 2.31 5.12 2.655 8 2.701v10.542c0 3.891-2.638 4.943-8 8.284-5.375-3.35-8-4.414-8-8.284v-10.542c2.88-.046 5.058-.391 8-2.701zm5 7.739l-5.992 6.623-3.672-3.931.701-.683 3.008 3.184 5.227-5.878.728.685z"/></svg>
+                Nasze połączenie jest szyfrowane, a przesyłane przez Ciebie dane są bezpieczne.
+                </p>
+          </div>
+        </div>
+      </section>
+      <section className='form-section' id='form'>
         <div className='form-section__inner'>
+          <p className='form-section__title'>Nie jestes pewien czy ta oferta jest dla Ciebie?  Skontaktuj sie ze mną!</p>
           <div className='form-section__wrapper'>
             <p>Wypełnij formularz kontaktowy, aby uzyskać więcej informacji i złożyć zamówienie</p>
             <div className='form-line'></div>
@@ -300,9 +338,10 @@ function App() {
           </div>
         </div>
       </section>
+      <section></section>
       <section className='footer'>
         <div className='footer_wrap'>
-          <p style={{fontSize: '15px', textAlign: 'center'}}>Copyright © 2022 Portfel Antyinflacyjny</p>
+          <p style={{fontSize: '15px', textAlign: 'center'}}>Copyright © {year} <br/> Portfel Antyinflacyjny</p>
           <a href='https://amerbroker.pl/'><img src={Logo2} alt="logo" /></a>
           <a href="https://amerbroker.pl/?go=content&action=show&id=363">Regulamin</a>
         </div>
