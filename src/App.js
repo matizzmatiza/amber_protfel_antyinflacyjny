@@ -8,11 +8,20 @@ import img3 from './img/2022-07-zadowolony-klient-1.png';
 import img4 from './img/2022-07-zdjecie-1.jpg';
 import mailimg from './img/mail.png';
 import Form from './Form'; 
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modal2IsOpen, setModal2IsOpen] = useState(false);
 
+  const imageUrl = img2;
+  const image2Url = img3;
   const year = new Date().getFullYear();
+
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -137,14 +146,25 @@ function App() {
           <p>Nasi analitycy poszukują rokujących trendów w obszarze wielu instrumentów finansowych. Wskazujemy<strong> szanse na zarobek na wzrostach i spadkach, na akcjach, indeksach, obligacjach, giełdach surowcowych</strong> – przekazujemy<strong> sygnały inwestycyjne o wysokim potencjale zysku</strong>.</p>
           <p><strong>Sygnały inwestycyjne w oparciu o strategię średnioterminowej zmiany trendu </strong></p>
           <p>Świadomie stosujemy strategię średnioterminowej zmiany trendu na każdym analizowanym instrumencie. To pozwala<strong>  skutecznie zarządzać ryzykiem inwestycyjnym </strong> – znacznie efektywniej niż kilkudniowe spekulacje czy dalekosiężne analizy w niestabilnej sytuacji na świecie. To nasz<strong>  sposób na zyski dla klientów. Inwestorzy potwierdzają ich skuteczność!</strong> </p>
-          <img src={img2} className="img_info_section" alt="2022-07-google-analytics-od-poczatku.png"/>
+          <img
+            src={img2}
+            className="img_info_section"
+            alt="2022-07-google-analytics-od-poczatku.png"
+            onClick={() => setModalIsOpen(true)}
+            style={{ cursor: 'pointer'}}
+          />
         </div>
       </section>
       <section className="info_section info_section2">
         <div className="info_sectionWrapper">
           <h1>Ponad 1,5 mln użytkowników w ciągu 15 lat istnienia serwisu</h1>
           <p>Z naszych <strong>wskazówek</strong>inwestycyjnych korzystają <strong> właściciele firm, kadra zarządzająca </strong>a nawet<strong> doradcy czołowych polskich instytucji finansowych</strong> – czyli ci, którzy poszukują bezpiecznych, a zarazem korzystnych szans na giełdzie. Takich, które nie tylko pozwolą<strong> ochronić majątek przed inflacją</strong>, ale pomnożyć kapitał na przyszłość. To zarówno osoby prowadzące własny biznes, jak i pełniące stanowiska kierownicze w różnych obszarach rynku. Jeżeli dysponujesz środkami na inwestycje – możesz dołączyć do tego grona.</p>
-          <img src={img3} className="img_info_section" alt="2022-07-google-analytics-od-poczatku.png"/>
+          <img src={img3} 
+            className="img_info_section" 
+            alt="2022-07-google-analytics-od-poczatku.png"
+            onClick={() => setModal2IsOpen(true)}
+            style={{ cursor: 'pointer'}}
+          />
           <div className="info_sectionGrid">
             <div className="info_sectionGridItem">
               <img src={Logo} className="img_info_sectionGrid" alt="logo"/>
@@ -235,12 +255,12 @@ function App() {
               </div>
             </div>
             <div className='invest_gridItem' ref={ref2}>
-              <p className='invest_gridItemTitle'>Praktyczne raporty WIG20</p>
-              <h1>Raporty WIG20</h1>
-              <p className='invest_gridItemDesc'>co tydzień uzyskasz pogłębione informacje o trendach w warszawskim indeksie WIG20, aby lepiej zrozumieć trendy inwestycyjne.</p>
+              <p className='invest_gridItemTitle'>Praktyczne analizy trendów</p>
+              <h1>Raporty WIG20, S@P, Nasdaq, DAX</h1>
+              <p className='invest_gridItemDesc'>Na bieżąco uzyskujesz informacje o aktualnych trendach na głównych indeksach co pozwala Ci zarabiać zarówno na wzrostach jak i spadkach</p>
               <div className='invest_gridItem_progressWrap'>
                 <div className="progress-bar">
-                  <div className={`progress ${inView2 ? 'animate' : ''}`} style={{ width: inView2 ? '100%' : '0%' }}>Praktyczne raporty WIG20</div>
+                  <div className={`progress ${inView2 ? 'animate' : ''}`} style={{ width: inView2 ? '100%' : '0%' }}>Raporty WIG20, S@P, Nasdaq, DAX</div>
                 </div>
               </div>
             </div>
@@ -346,6 +366,60 @@ function App() {
           <a href="https://amerbroker.pl/?go=content&action=show&id=363">Regulamin</a>
         </div>
       </section>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            padding: '0',
+            border: 'none',
+            background: 'none',
+          },
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+          },
+        }}
+      >
+        <img
+          src={imageUrl}
+          alt="Large Image"
+          style={{ maxWidth: '95vw', maxHeight: '95vh' }}
+          onClick={() => setModalIsOpen(false)} // Kliknięcie zamyka modal
+        />
+      </Modal>
+      <Modal
+        isOpen={modal2IsOpen}
+        onRequestClose={() => setModal2IsOpen(false)}
+        style={{
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            padding: '0',
+            border: 'none',
+            background: 'none',
+          },
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+          },
+        }}
+      >
+        <img
+          src={image2Url}
+          alt="Large Image"
+          style={{ maxWidth: '95vw', maxHeight: '95vh' }}
+          onClick={() => setModal2IsOpen(false)} // Kliknięcie zamyka modal
+        />
+      </Modal>
     </div>
   );
 }
